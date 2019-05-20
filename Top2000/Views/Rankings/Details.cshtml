@@ -1,0 +1,42 @@
+﻿@model Top2000.EF.tblRanking
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tblRanking</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tblSongs.SongName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblSongs.SongName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RankingPosition)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RankingPosition)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RankingYear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RankingYear)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RankingID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

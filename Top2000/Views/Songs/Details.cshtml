@@ -1,0 +1,42 @@
+﻿@model Top2000.EF.tblSongs
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tblSongs</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tblArtist.ArtistName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblArtist.ArtistName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SongName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SongName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SongYear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SongYear)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SongID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
