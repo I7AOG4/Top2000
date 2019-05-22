@@ -16,7 +16,7 @@ namespace Top2000
 			routes.MapRoute(
 				name: "Default",
 				url: "{controller}/{action}/{id}",
-				defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+				defaults: new { controller = "Rankings", action = "Index", id = UrlParameter.Optional }
 			);
 		}
 	}

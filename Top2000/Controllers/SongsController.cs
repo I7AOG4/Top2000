@@ -12,7 +12,7 @@ namespace Top2000.Controllers
 {
     public class SongsController : Controller
     {
-        private EFContext db = new EFContext();
+        private Top2000Entities db = new Top2000Entities();
 
         // GET: Songs
         public ActionResult Index()

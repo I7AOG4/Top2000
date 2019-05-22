@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Top2000Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblArtist">
+          <Key>
+            <PropertyRef Name="ArtistID" />
+          </Key>
+          <Property Name="ArtistID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ArtistName" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblRanking">
+          <Key>
+            <PropertyRef Name="RankingID" />
+          </Key>
+          <Property Name="RankingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SongID" Type="int" />
+          <Property Name="RankingPosition" Type="int" />
+          <Property Name="RankingYear" Type="int" />
+        </EntityType>
+        <EntityType Name="tblSongs">
+          <Key>
+            <PropertyRef Name="SongID" />
+          </Key>
+          <Property Name="SongID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ArtistID" Type="int" />
+          <Property Name="SongName" Type="nvarchar" MaxLength="255" />
+          <Property Name="SongYear" Type="int" />
+        </EntityType>
+        <Association Name="FK__tblRankin__SongI__3C69FB99">
+          <End Role="tblSongs" Type="Self.tblSongs" Multiplicity="0..1" />
+          <End Role="tblRanking" Type="Self.tblRanking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSongs">
+              <PropertyRef Name="SongID" />
+            </Principal>
+            <Dependent Role="tblRanking">
+              <PropertyRef Name="SongID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblSongs__Artist__398D8EEE">
+          <End Role="tblArtist" Type="Self.tblArtist" Multiplicity="0..1" />
+          <End Role="tblSongs" Type="Self.tblSongs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblArtist">
+              <PropertyRef Name="ArtistID" />
+            </Principal>
+            <Dependent Role="tblSongs">
+              <PropertyRef Name="ArtistID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="spSongList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Year" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spYears" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="Top2000ModelStoreContainer">
+          <EntitySet Name="tblArtist" EntityType="Self.tblArtist" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRanking" EntityType="Self.tblRanking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSongs" EntityType="Self.tblSongs" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tblRankin__SongI__3C69FB99" Association="Self.FK__tblRankin__SongI__3C69FB99">
+            <End Role="tblSongs" EntitySet="tblSongs" />
+            <End Role="tblRanking" EntitySet="tblRanking" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblSongs__Artist__398D8EEE" Association="Self.FK__tblSongs__Artist__398D8EEE">
+            <End Role="tblArtist" EntitySet="tblArtist" />
+            <End Role="tblSongs" EntitySet="tblSongs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Top2000Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblArtist">
+          <Key>
+            <PropertyRef Name="ArtistID" />
+          </Key>
+          <Property Name="ArtistID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ArtistName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tblSongs" Relationship="Self.FK__tblSongs__Artist__398D8EEE" FromRole="tblArtist" ToRole="tblSongs" />
+        </EntityType>
+        <EntityType Name="tblRanking">
+          <Key>
+            <PropertyRef Name="RankingID" />
+          </Key>
+          <Property Name="RankingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SongID" Type="Int32" />
+          <Property Name="RankingPosition" Type="Int32" />
+          <Property Name="RankingYear" Type="Int32" />
+          <NavigationProperty Name="tblSongs" Relationship="Self.FK__tblRankin__SongI__3C69FB99" FromRole="tblRanking" ToRole="tblSongs" />
+        </EntityType>
+        <EntityType Name="tblSongs">
+          <Key>
+            <PropertyRef Name="SongID" />
+          </Key>
+          <Property Name="SongID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ArtistID" Type="Int32" />
+          <Property Name="SongName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SongYear" Type="Int32" />
+          <NavigationProperty Name="tblArtist" Relationship="Self.FK__tblSongs__Artist__398D8EEE" FromRole="tblSongs" ToRole="tblArtist" />
+          <NavigationProperty Name="tblRanking" Relationship="Self.FK__tblRankin__SongI__3C69FB99" FromRole="tblSongs" ToRole="tblRanking" />
+        </EntityType>
+        <Association Name="FK__tblSongs__Artist__398D8EEE">
+          <End Role="tblArtist" Type="Self.tblArtist" Multiplicity="0..1" />
+          <End Role="tblSongs" Type="Self.tblSongs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblArtist">
+              <PropertyRef Name="ArtistID" />
+            </Principal>
+            <Dependent Role="tblSongs">
+              <PropertyRef Name="ArtistID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblRankin__SongI__3C69FB99">
+          <End Role="tblSongs" Type="Self.tblSongs" Multiplicity="0..1" />
+          <End Role="tblRanking" Type="Self.tblRanking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSongs">
+              <PropertyRef Name="SongID" />
+            </Principal>
+            <Dependent Role="tblRanking">
+              <PropertyRef Name="SongID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Top2000Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblArtist" EntityType="Self.tblArtist" />
+          <EntitySet Name="tblRanking" EntityType="Self.tblRanking" />
+          <EntitySet Name="tblSongs" EntityType="Self.tblSongs" />
+          <AssociationSet Name="FK__tblSongs__Artist__398D8EEE" Association="Self.FK__tblSongs__Artist__398D8EEE">
+            <End Role="tblArtist" EntitySet="tblArtist" />
+            <End Role="tblSongs" EntitySet="tblSongs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblRankin__SongI__3C69FB99" Association="Self.FK__tblRankin__SongI__3C69FB99">
+            <End Role="tblSongs" EntitySet="tblSongs" />
+            <End Role="tblRanking" EntitySet="tblRanking" />
+          </AssociationSet>
+          <FunctionImport Name="spSongList" ReturnType="Collection(Top2000Model.spSongList_Result)">
+            <Parameter Name="Year" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spYears" ReturnType="Collection(Int32)" />
+        </EntityContainer>
+        <ComplexType Name="spSongList_Result">
+          <Property Type="Int32" Name="RankingPosition" Nullable="true" />
+          <Property Type="String" Name="SongName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="ArtistName" Nullable="false" MaxLength="255" />
+          <Property Type="Int32" Name="SongYear" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Top2000ModelStoreContainer" CdmEntityContainer="Top2000Entities">
+          <EntitySetMapping Name="tblArtist">
+            <EntityTypeMapping TypeName="Top2000Model.tblArtist">
+              <MappingFragment StoreEntitySet="tblArtist">
+                <ScalarProperty Name="ArtistID" ColumnName="ArtistID" />
+                <ScalarProperty Name="ArtistName" ColumnName="ArtistName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRanking">
+            <EntityTypeMapping TypeName="Top2000Model.tblRanking">
+              <MappingFragment StoreEntitySet="tblRanking">
+                <ScalarProperty Name="RankingID" ColumnName="RankingID" />
+                <ScalarProperty Name="SongID" ColumnName="SongID" />
+                <ScalarProperty Name="RankingPosition" ColumnName="RankingPosition" />
+                <ScalarProperty Name="RankingYear" ColumnName="RankingYear" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSongs">
+            <EntityTypeMapping TypeName="Top2000Model.tblSongs">
+              <MappingFragment StoreEntitySet="tblSongs">
+                <ScalarProperty Name="SongID" ColumnName="SongID" />
+                <ScalarProperty Name="ArtistID" ColumnName="ArtistID" />
+                <ScalarProperty Name="SongName" ColumnName="SongName" />
+                <ScalarProperty Name="SongYear" ColumnName="SongYear" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spSongList" FunctionName="Top2000Model.Store.spSongList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Top2000Model.spSongList_Result">
+                <ScalarProperty Name="RankingPosition" ColumnName="RankingPosition" />
+                <ScalarProperty Name="SongName" ColumnName="SongName" />
+                <ScalarProperty Name="ArtistName" ColumnName="ArtistName" />
+                <ScalarProperty Name="SongYear" ColumnName="SongYear" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spYears" FunctionName="Top2000Model.Store.spYears" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
