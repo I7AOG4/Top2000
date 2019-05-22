@@ -10,15 +10,12 @@
 namespace Top2000.EF
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class tblRanking
+    public partial class spSongList_Result
     {
-        public int RankingID { get; set; }
-        public Nullable<int> SongID { get; set; }
         public Nullable<int> RankingPosition { get; set; }
-        public Nullable<int> RankingYear { get; set; }
-    
-        public virtual tblSongs tblSongs { get; set; }
+        public string SongName { get; set; }
+        public string ArtistName { get; set; }
+        public Nullable<int> SongYear { get; set; }
     }
 }
