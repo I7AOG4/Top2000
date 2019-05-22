@@ -4,42 +4,47 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            Nr.
-        </th>
-        <th>
-            Liedje
-        </th>
-        <th>
-            Artiest
-        </th>
-        <th>
-			Jaar
-		</th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.RankingPosition)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SongName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ArtistName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SongYear)
-        </td>
-    </tr>
-}
-
+<div class=" bg-dark">
+	<h5 class="text-white float-left">Lijst 2018</h5>
+	@using (Html.BeginForm())
+	{
+		@Html.DropDownList("jaar" , new SelectList(ViewBag.Years,"jaar"), new { onchange = "this.form.submit();" })
+	}
+</div>
+<table class="table table-light table-striped">
+	<thead class="thead-light">
+		<tr>
+			<th>
+				NR.
+			</th>
+			<th>
+				TITEL
+			</th>
+			<th>
+				ARTIEST
+			</th>
+			<th>
+				JAAR
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.RankingPosition)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.SongName)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.ArtistName)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.SongYear)
+				</td>
+			</tr>
+		}
+	</tbody>
 </table>
