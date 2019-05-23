@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<Top2000.EF.spSongList_Result>
 
+
 @{
     ViewBag.Title = "Index";
 }
@@ -21,25 +22,27 @@
             Artiest
         </th>
         <th>
-			Jaar
-		</th>
+            Jaar
+        </th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.RankingPosition)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SongName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ArtistName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SongYear)
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RankingPosition)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SongName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArtistName)
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SongYear)
+            </td>
+        </tr>
+    }
 
 </table>

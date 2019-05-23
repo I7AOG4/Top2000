@@ -176,6 +176,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArtistsController.cs" />
+    <Compile Include="Controllers\ArtistYearController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RankingsController.cs" />
@@ -195,7 +196,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EntityFramework.edmx</DependentUpon>
     </Compile>
+    <Compile Include="EF\spArtistGemiddelde_Result.cs">
+      <DependentUpon>EntityFramework.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\spArtistRanking_Result.cs">
+      <DependentUpon>EntityFramework.tt</DependentUpon>
+    </Compile>
     <Compile Include="EF\spSongList_Result.cs">
+      <DependentUpon>EntityFramework.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\spYearRanking_Result.cs">
       <DependentUpon>EntityFramework.tt</DependentUpon>
     </Compile>
     <Compile Include="EF\tblArtist.cs">
@@ -344,6 +354,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\ArtistYear\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

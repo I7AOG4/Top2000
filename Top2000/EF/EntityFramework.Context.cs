@@ -44,5 +44,37 @@ namespace Top2000.EF
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("spYears");
         }
+    
+        public virtual ObjectResult<spArtistGemiddelde_Result> spArtistGemiddelde(string artistname)
+        {
+            var artistnameParameter = artistname != null ?
+                new ObjectParameter("artistname", artistname) :
+                new ObjectParameter("artistname", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spArtistGemiddelde_Result>("spArtistGemiddelde", artistnameParameter);
+        }
+    
+        public virtual ObjectResult<spArtistRanking_Result> spArtistRanking(string artistname)
+        {
+            var artistnameParameter = artistname != null ?
+                new ObjectParameter("artistname", artistname) :
+                new ObjectParameter("artistname", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spArtistRanking_Result>("spArtistRanking", artistnameParameter);
+        }
+    
+        public virtual ObjectResult<spYearRanking_Result> spYearRanking(Nullable<int> rankingYear)
+        {
+            var rankingYearParameter = rankingYear.HasValue ?
+                new ObjectParameter("RankingYear", rankingYear) :
+                new ObjectParameter("RankingYear", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spYearRanking_Result>("spYearRanking", rankingYearParameter);
+        }
+    
+        public virtual ObjectResult<string> spAllArtist()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("spAllArtist");
+        }
     }
 }
