@@ -12,13 +12,21 @@ namespace Top2000.Controllers
 {
     public class RankingsController : Controller
     {
-        private EFContext db = new EFContext();
+        private Top2000Entities db = new Top2000Entities();
 
         // GET: Rankings
-        public ActionResult Index()
+        public ActionResult Index(int? jaar)
         {
-            var tblRanking = db.tblRanking.Include(t => t.tblSongs);
-            return View(tblRanking.ToList());
+			ViewBag.Years = db.spYears().ToList();
+			if (jaar == null)
+			{
+				var data = db.spSongList(2018);
+				return View(data.ToList());
+			} else
+			{
+				var data = db.spSongList(jaar);
+				return View(data.ToList());
+			}
         }
 
         // GET: Rankings/Details/5

@@ -1,45 +1,50 @@
-﻿@model IEnumerable<Top2000.EF.tblRanking>
+﻿@model IEnumerable<Top2000.EF.spSongList_Result>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.tblSongs.SongName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RankingPosition)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RankingYear)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.tblSongs.SongName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RankingPosition)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RankingYear)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.RankingID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.RankingID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.RankingID })
-        </td>
-    </tr>
-}
-
+<div class=" bg-dark">
+	<h5 class="text-white float-left">Lijst 2018</h5>
+	@using (Html.BeginForm())
+	{
+		@Html.DropDownList("jaar" , new SelectList(ViewBag.Years,"jaar"), new { onchange = "this.form.submit();" })
+	}
+</div>
+<table class="table table-light table-striped">
+	<thead class="thead-light">
+		<tr>
+			<th>
+				NR.
+			</th>
+			<th>
+				TITEL
+			</th>
+			<th>
+				ARTIEST
+			</th>
+			<th>
+				JAAR
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.RankingPosition)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.SongName)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.ArtistName)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.SongYear)
+				</td>
+			</tr>
+		}
+	</tbody>
 </table>
