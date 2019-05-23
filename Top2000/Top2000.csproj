@@ -195,8 +195,32 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EntityFramework.edmx</DependentUpon>
     </Compile>
+    <Compile Include="EF\spArtistGemiddelde_Result.cs">
+      <DependentUpon>spYearRanking.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\spArtistRanking_Result.cs">
+      <DependentUpon>spYearRanking.tt</DependentUpon>
+    </Compile>
     <Compile Include="EF\spSongList_Result.cs">
-      <DependentUpon>EntityFramework.tt</DependentUpon>
+      <DependentUpon>spYearRanking.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\spYearRanking.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>spYearRanking.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\spYearRanking.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>spYearRanking.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\spYearRanking.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>spYearRanking.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EF\spYearRanking_Result.cs">
+      <DependentUpon>spYearRanking.tt</DependentUpon>
     </Compile>
     <Compile Include="EF\tblArtist.cs">
       <DependentUpon>EntityFramework.tt</DependentUpon>
@@ -237,6 +261,16 @@
       <DependentUpon>EntityFramework.edmx</DependentUpon>
       <LastGenOutput>EntityFramework.cs</LastGenOutput>
     </Content>
+    <Content Include="EF\spYearRanking.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>spYearRanking.edmx</DependentUpon>
+      <LastGenOutput>spYearRanking.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="EF\spYearRanking.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>spYearRanking.edmx</DependentUpon>
+      <LastGenOutput>spYearRanking.cs</LastGenOutput>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -261,6 +295,13 @@
     </EntityDeploy>
     <Content Include="EF\EntityFramework.edmx.diagram">
       <DependentUpon>EntityFramework.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="EF\spYearRanking.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>spYearRanking.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="EF\spYearRanking.edmx.diagram">
+      <DependentUpon>spYearRanking.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

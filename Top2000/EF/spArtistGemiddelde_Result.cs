@@ -11,11 +11,9 @@ namespace Top2000.EF
 {
     using System;
     
-    public partial class spSongList_Result
+    public partial class spArtistGemiddelde_Result
     {
-        public Nullable<int> RankingPosition { get; set; }
+        public Nullable<int> Average_Position { get; set; }
         public string ArtistName { get; set; }
-        public string SongName { get; set; }
-        public Nullable<int> SongYear { get; set; }
     }
 }
