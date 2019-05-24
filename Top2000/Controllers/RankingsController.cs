@@ -29,6 +29,14 @@ namespace Top2000.Controllers
 			}
         }
 
+        public ActionResult YearRanking(int jaar)
+        {
+            var data = db.spYearRanking(2018);
+            return View(data.ToList());
+        }
+
+
+
         // GET: Rankings/Details/5
         public ActionResult Details(int? id)
         {

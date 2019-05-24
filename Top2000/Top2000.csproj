@@ -196,13 +196,13 @@
       <DependentUpon>EntityFramework.edmx</DependentUpon>
     </Compile>
     <Compile Include="EF\spArtistGemiddelde_Result.cs">
-      <DependentUpon>spYearRanking.tt</DependentUpon>
+      <DependentUpon>EntityFramework.tt</DependentUpon>
     </Compile>
     <Compile Include="EF\spArtistRanking_Result.cs">
-      <DependentUpon>spYearRanking.tt</DependentUpon>
+      <DependentUpon>EntityFramework.tt</DependentUpon>
     </Compile>
     <Compile Include="EF\spSongList_Result.cs">
-      <DependentUpon>spYearRanking.tt</DependentUpon>
+      <DependentUpon>EntityFramework.tt</DependentUpon>
     </Compile>
     <Compile Include="EF\spYearRanking.Context.cs">
       <AutoGen>True</AutoGen>
@@ -220,7 +220,7 @@
       <DependentUpon>spYearRanking.edmx</DependentUpon>
     </Compile>
     <Compile Include="EF\spYearRanking_Result.cs">
-      <DependentUpon>spYearRanking.tt</DependentUpon>
+      <DependentUpon>EntityFramework.tt</DependentUpon>
     </Compile>
     <Compile Include="EF\tblArtist.cs">
       <DependentUpon>EntityFramework.tt</DependentUpon>
