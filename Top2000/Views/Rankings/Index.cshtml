@@ -4,12 +4,16 @@
     ViewBag.Title = "Index";
 }
 
-<div class=" bg-dark">
-	<h5 class="text-white float-left">Lijst 2018</h5>
-	@using (Html.BeginForm())
-	{
-		@Html.DropDownList("jaar" , new SelectList(ViewBag.Years,"jaar"), new { onchange = "this.form.submit();" })
-	}
+<div class="bg-dark d-flex" style="width:100%">
+	<div class="mr-auto">
+		<h5 class="text-white">Lijst 2018</h5>
+	</div>
+	<div class="ml-auto">
+		@using (Html.BeginForm())
+		{
+			@Html.DropDownList("jaar", new SelectList(ViewBag.Years, "jaar"), new { onchange = "this.form.submit();" })
+		}
+	</div>
 </div>
 <table class="table table-light table-striped">
 	<thead class="thead-light">
