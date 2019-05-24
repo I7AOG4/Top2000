@@ -195,7 +195,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EntityFramework.edmx</DependentUpon>
     </Compile>
+    <Compile Include="EF\spArtistGemiddelde_Result.cs">
+      <DependentUpon>EntityFramework.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\spArtistRanking_Result.cs">
+      <DependentUpon>EntityFramework.tt</DependentUpon>
+    </Compile>
     <Compile Include="EF\spSongList_Result.cs">
+      <DependentUpon>EntityFramework.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\spYearRanking_Result.cs">
       <DependentUpon>EntityFramework.tt</DependentUpon>
     </Compile>
     <Compile Include="EF\tblArtist.cs">
@@ -341,9 +350,11 @@
     <Content Include="Views\Songs\Details.cshtml" />
     <Content Include="Views\Songs\Edit.cshtml" />
     <Content Include="Views\Songs\Index.cshtml" />
+    <Content Include="Views\Rankings\ArtistYear.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\ArtistYear\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
