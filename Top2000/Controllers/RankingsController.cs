@@ -18,7 +18,8 @@ namespace Top2000.Controllers
         public ActionResult Index(int? jaar)
         {
 			ViewBag.Years = db.spYears().ToList();
-			if (jaar == null)
+            ViewBag.artist = db.spAllArtist().ToList();
+            if (jaar == null)
 			{
 				var data = db.spSongList(2018);
 				return View(data.ToList());
@@ -28,7 +29,11 @@ namespace Top2000.Controllers
 				return View(data.ToList());
 			}
         }
-
+        public ActionResult ArtistYear(string artist)
+        {
+            var data = db.spArtistRanking(artist);
+            return View(data.ToList());
+        }
         // GET: Rankings/Details/5
         public ActionResult Details(int? id)
         {
