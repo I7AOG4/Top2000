@@ -17,11 +17,18 @@ namespace Top2000.Controllers
         // GET: Rankings
         public ActionResult Index()
         {
-			//var tblRanking = db.tblRanking.Include(t => t.tblSongs);
-			//return View(tblRanking.ToList());
+            //var tblRanking = db.tblRanking.Include(t => t.tblSongs);
+            //return View(tblRanking.ToList());
+            ViewBag.artist = db.spAllArtist().ToList();
 			var data = db.spSongList(2018);
 			return View(data.ToList());
         }
+        public ActionResult ArtistYear(string artist)
+        {
+            var data = db.spArtistRanking(artist);
+            return View(data.ToList());
+        }
+        
 
         // GET: Rankings/Details/5
         public ActionResult Details(int? id)

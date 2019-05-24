@@ -6,7 +6,10 @@
 }
 
 <h2>Index</h2>
-
+@using (Html.BeginForm("ArtistYear", "Rankings"))
+{
+    @Html.DropDownList("artist", new SelectList(ViewBag.artist, "artist"), new { onchange = "this.form.submit();" })
+}
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
