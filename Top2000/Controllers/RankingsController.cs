@@ -29,11 +29,29 @@ namespace Top2000.Controllers
 				return View(data.ToList());
 			}
         }
+        //function5
+        //overzicht van de noteringen van elk jaar
         public ActionResult ArtistYear(string artist)
         {
             var data = db.spArtistRanking(artist);
             return View(data.ToList());
         }
+        //overzicht4
+        //overzicht van de song waarop geselecterd
+        public ActionResult YearRanking(string songName, int? jaar)
+        {
+            if (jaar == null)
+            {
+                var data = db.spYearRanking(songName, 2018);
+                return View(data.ToList());
+            }
+            else
+            {
+                var data = db.spYearRanking(songName, jaar);
+                return View(data.ToList());
+            }
+        }
+
         // GET: Rankings/Details/5
         public ActionResult Details(int? id)
         {
