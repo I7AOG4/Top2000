@@ -204,6 +204,22 @@
     <Compile Include="EF\spSongList_Result.cs">
       <DependentUpon>EntityFramework.tt</DependentUpon>
     </Compile>
+
+    <Compile Include="EF\spYearRanking.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>spYearRanking.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\spYearRanking.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>spYearRanking.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\spYearRanking.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>spYearRanking.edmx</DependentUpon>
+    </Compile>
     <Compile Include="EF\spYearRanking_Result.cs">
       <DependentUpon>EntityFramework.tt</DependentUpon>
     </Compile>
@@ -246,6 +262,16 @@
       <DependentUpon>EntityFramework.edmx</DependentUpon>
       <LastGenOutput>EntityFramework.cs</LastGenOutput>
     </Content>
+    <Content Include="EF\spYearRanking.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>spYearRanking.edmx</DependentUpon>
+      <LastGenOutput>spYearRanking.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="EF\spYearRanking.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>spYearRanking.edmx</DependentUpon>
+      <LastGenOutput>spYearRanking.cs</LastGenOutput>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -270,6 +296,13 @@
     </EntityDeploy>
     <Content Include="EF\EntityFramework.edmx.diagram">
       <DependentUpon>EntityFramework.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="EF\spYearRanking.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>spYearRanking.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="EF\spYearRanking.edmx.diagram">
+      <DependentUpon>spYearRanking.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -350,7 +383,10 @@
     <Content Include="Views\Songs\Details.cshtml" />
     <Content Include="Views\Songs\Edit.cshtml" />
     <Content Include="Views\Songs\Index.cshtml" />
+
+   
     <Content Include="Views\Rankings\ArtistYear.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

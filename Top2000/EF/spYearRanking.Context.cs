@@ -15,10 +15,10 @@ namespace Top2000.EF
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class Top2000Entities : DbContext
+    public partial class Top2000Entities1 : DbContext
     {
-        public Top2000Entities()
-            : base("name=Top2000Entities")
+        public Top2000Entities1()
+            : base("name=Top2000Entities1")
         {
         }
     
@@ -27,23 +27,6 @@ namespace Top2000.EF
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<tblArtist> tblArtist { get; set; }
-        public virtual DbSet<tblRanking> tblRanking { get; set; }
-        public virtual DbSet<tblSongs> tblSongs { get; set; }
-    
-        public virtual ObjectResult<spSongList_Result> spSongList(Nullable<int> year)
-        {
-            var yearParameter = year.HasValue ?
-                new ObjectParameter("Year", year) :
-                new ObjectParameter("Year", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spSongList_Result>("spSongList", yearParameter);
-        }
-    
-        public virtual ObjectResult<Nullable<int>> spYears()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("spYears");
-        }
     
         public virtual ObjectResult<spArtistGemiddelde_Result> spArtistGemiddelde(string artistname)
         {
@@ -63,22 +46,27 @@ namespace Top2000.EF
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spArtistRanking_Result>("spArtistRanking", artistnameParameter);
         }
     
-
+        public virtual ObjectResult<spSongList_Result> spSongList(Nullable<int> year)
+        {
+            var yearParameter = year.HasValue ?
+                new ObjectParameter("Year", year) :
+                new ObjectParameter("Year", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spSongList_Result>("spSongList", yearParameter);
+        }
+    
         public virtual ObjectResult<spYearRanking_Result> spYearRanking(Nullable<int> rankingYear)
         {
-
             var rankingYearParameter = rankingYear.HasValue ?
                 new ObjectParameter("RankingYear", rankingYear) :
                 new ObjectParameter("RankingYear", typeof(int));
     
-
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spYearRanking_Result>("spYearRanking", rankingYearParameter);
-
         }
     
-        public virtual ObjectResult<string> spAllArtist()
+        public virtual ObjectResult<Nullable<int>> spYears()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("spAllArtist");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("spYears");
         }
     }
 }

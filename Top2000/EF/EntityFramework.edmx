@@ -54,7 +54,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="spAllArtist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+
         <Function Name="spArtistGemiddelde" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="artistname" Type="varchar(max)" Mode="In" />
         </Function>
@@ -65,6 +65,8 @@
           <Parameter Name="Year" Type="int" Mode="In" />
         </Function>
         <Function Name="spYearRanking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+
+
           <Parameter Name="RankingYear" Type="int" Mode="In" />
         </Function>
         <Function Name="spYears" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -161,7 +163,8 @@
           <Parameter Name="artistname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="spYearRanking" ReturnType="Collection(Top2000Model.spYearRanking_Result)">
-          <Parameter Name="RankingYear" Mode="In" Type="Int32" />
+            <Parameter Name="Songname" Mode="In" Type="String" />
+            <Parameter Name="RankingYear" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spAllArtist" ReturnType="Collection(String)" />
         </EntityContainer>

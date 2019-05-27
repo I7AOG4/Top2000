@@ -1,10 +1,10 @@
-﻿@model IEnumerable<Top2000.EF.tblSongs>
+﻿@model IEnumerable<Top2000.EF.spYearRanking_Result>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "YearRanking";
 }
 
-<h2>Index</h2>
+<h2>YearRanking</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -12,28 +12,28 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.SongName)
+            Nr.
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SongYear)
+            Liedjes
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tblArtist.ArtistName)
-        </th>
+		<th>
+			Jaar van het liedje
+		</th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.RankingPosition)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.SongName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.SongYear)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tblArtist.ArtistName)
-        </td>      
     </tr>
 }
 
