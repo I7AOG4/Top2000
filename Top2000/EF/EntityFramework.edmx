@@ -54,6 +54,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="spAllArtist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spArtistGemiddelde" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="artistname" Type="varchar(max)" Mode="In" />
         </Function>
@@ -64,7 +65,8 @@
           <Parameter Name="Year" Type="int" Mode="In" />
         </Function>
         <Function Name="spYearRanking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Songgname" Type="int" Mode="In" />
+          <Parameter Name="Songname" Type="varchar(max)" Mode="In" />
+          <Parameter Name="RankingYear" Type="int" Mode="In" />
         </Function>
         <Function Name="spYears" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="Top2000ModelStoreContainer">
@@ -160,8 +162,10 @@
           <Parameter Name="artistname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="spYearRanking" ReturnType="Collection(Top2000Model.spYearRanking_Result)">
-          <Parameter Name="Songgname" Mode="In" Type="Int32" />
+          <Parameter Name="Songname" Mode="In" Type="String" />
+            <Parameter Name="RankingYear" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="spAllArtist" ReturnType="Collection(String)" />
         </EntityContainer>
         <ComplexType Name="spSongList_Result">
           <Property Type="Int32" Name="RankingPosition" Nullable="true" />
@@ -176,7 +180,6 @@
         <ComplexType Name="spArtistRanking_Result">
           <Property Type="String" Name="ArtistName" Nullable="false" MaxLength="255" />
           <Property Type="String" Name="SongName" Nullable="true" MaxLength="255" />
-          <Property Type="Int32" Name="SongYear" Nullable="true" />
           <Property Type="Int32" Name="RankingPosition" Nullable="true" />
           <Property Type="Int32" Name="RankingYear" Nullable="true" />
         </ComplexType>
@@ -243,7 +246,6 @@
               <ComplexTypeMapping TypeName="Top2000Model.spArtistRanking_Result">
                 <ScalarProperty Name="ArtistName" ColumnName="ArtistName" />
                 <ScalarProperty Name="SongName" ColumnName="SongName" />
-                <ScalarProperty Name="SongYear" ColumnName="SongYear" />
                 <ScalarProperty Name="RankingPosition" ColumnName="RankingPosition" />
                 <ScalarProperty Name="RankingYear" ColumnName="RankingYear" />
               </ComplexTypeMapping>
