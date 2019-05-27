@@ -29,10 +29,18 @@ namespace Top2000.Controllers
 			}
         }
 
-        public ActionResult YearRanking(string songName)
-        {           
-                var data = db.spYearRanking(songName);
-                return View(data.ToList());                 
+        public ActionResult YearRanking(string songName, int? jaar)
+        {                         
+            if (jaar == null)
+            {
+                var data = db.spYearRanking(songName, 2018);
+                return View(data.ToList());
+            }
+            else
+            {
+                var data = db.spYearRanking(songName, jaar);
+                return View(data.ToList());
+            }           
         }
 
 

@@ -161,7 +161,7 @@
           <Parameter Name="artistname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="spYearRanking" ReturnType="Collection(Top2000Model.spYearRanking_Result)">
-          <Parameter Name="Songname" Mode="In" Type="String" />
+            <Parameter Name="Songname" Mode="In" Type="String" />
             <Parameter Name="RankingYear" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spAllArtist" ReturnType="Collection(String)" />
