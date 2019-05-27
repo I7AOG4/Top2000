@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Top2000.EF.spArtistGemiddelde_Result>
+
+@{
+    ViewBag.Title = "ArtistAverage";
+}
+
+<h2>ArtistAverage</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<p>
+    @using (Html.BeginForm("ArtistAverage", "Rankings", FormMethod.Get))
+    {
+        <b style="color:white; float:right">
+            Search:
+            @Html.TextBox("artistname")<input id="artistname" type="submit" value="Search" />
+        </b>
+    }
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ArtistName)
+        </th>
+        <th>
+            Gemiddelde
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArtistName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Average_Position)
+            </td>
+        </tr>
+    }
+
+</table>

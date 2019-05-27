@@ -30,7 +30,7 @@
           <Property Name="SongName" Type="nvarchar" MaxLength="255" />
           <Property Name="SongYear" Type="int" />
         </EntityType>
-        <Association Name="FK__tblRankin__SongI__3C69FB99">
+        <Association Name="FK__tblRankin__SongI__286302EC">
           <End Role="tblSongs" Type="Self.tblSongs" Multiplicity="0..1" />
           <End Role="tblRanking" Type="Self.tblRanking" Multiplicity="*" />
           <ReferentialConstraint>
@@ -42,7 +42,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblSongs__Artist__398D8EEE">
+        <Association Name="FK__tblSongs__Artist__25869641">
           <End Role="tblArtist" Type="Self.tblArtist" Multiplicity="0..1" />
           <End Role="tblSongs" Type="Self.tblSongs" Multiplicity="*" />
           <ReferentialConstraint>
@@ -73,11 +73,11 @@
           <EntitySet Name="tblArtist" EntityType="Self.tblArtist" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblRanking" EntityType="Self.tblRanking" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblSongs" EntityType="Self.tblSongs" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__tblRankin__SongI__3C69FB99" Association="Self.FK__tblRankin__SongI__3C69FB99">
+          <AssociationSet Name="FK__tblRankin__SongI__286302EC" Association="Self.FK__tblRankin__SongI__286302EC">
             <End Role="tblSongs" EntitySet="tblSongs" />
             <End Role="tblRanking" EntitySet="tblRanking" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblSongs__Artist__398D8EEE" Association="Self.FK__tblSongs__Artist__398D8EEE">
+          <AssociationSet Name="FK__tblSongs__Artist__25869641" Association="Self.FK__tblSongs__Artist__25869641">
             <End Role="tblArtist" EntitySet="tblArtist" />
             <End Role="tblSongs" EntitySet="tblSongs" />
           </AssociationSet>
@@ -260,7 +260,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spAllArtist" FunctionName="Top2000Model.Store.spAllArtist" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
