@@ -23,6 +23,12 @@ namespace Top2000.Controllers
 			return View(data.ToList());
         }
 
+        public ActionResult ArtistAverage(string artistname)
+        {
+            var data = db.spArtistGemiddelde(artistname);
+            return View(data.ToList());
+        }
+
         // GET: Rankings/Details/5
         public ActionResult Details(int? id)
         {

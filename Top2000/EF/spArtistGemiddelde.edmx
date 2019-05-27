@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Top2000Model1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="spArtistGemiddelde" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="artistname" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="spArtistRanking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="artistname" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="spSongList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Year" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spYearRanking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RankingYear" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spYears" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="Top2000Model1StoreContainer" />
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Top2000Model1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Top2000SP" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="spArtistGemiddelde" ReturnType="Collection(Top2000Model1.spArtistGemiddelde_Result)">
+            <Parameter Name="artistname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spArtistRanking" ReturnType="Collection(Top2000Model1.spArtistRanking_Result)">
+            <Parameter Name="artistname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spSongList" ReturnType="Collection(Top2000Model1.spSongList_Result)">
+            <Parameter Name="Year" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spYearRanking" ReturnType="Collection(Top2000Model1.spYearRanking_Result)">
+            <Parameter Name="RankingYear" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spYears" ReturnType="Collection(Int32)" />
+        </EntityContainer>
+        <ComplexType Name="spArtistGemiddelde_Result">
+          <Property Type="Int32" Name="Average_Position" Nullable="true" />
+          <Property Type="String" Name="ArtistName" Nullable="false" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="spArtistRanking_Result">
+          <Property Type="String" Name="ArtistName" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="SongName" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="SongYear" Nullable="true" />
+          <Property Type="Int32" Name="RankingPosition" Nullable="true" />
+          <Property Type="Int32" Name="RankingYear" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spSongList_Result">
+          <Property Type="Int32" Name="RankingPosition" Nullable="true" />
+          <Property Type="String" Name="ArtistName" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="SongName" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="SongYear" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spYearRanking_Result">
+          <Property Type="Int32" Name="RankingPosition" Nullable="true" />
+          <Property Type="String" Name="SongName" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="SongYear" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Top2000Model1StoreContainer" CdmEntityContainer="Top2000SP" >
+          <FunctionImportMapping FunctionImportName="spArtistGemiddelde" FunctionName="Top2000Model1.Store.spArtistGemiddelde">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Top2000Model1.spArtistGemiddelde_Result">
+                <ScalarProperty Name="Average_Position" ColumnName="Average Position" />
+                <ScalarProperty Name="ArtistName" ColumnName="ArtistName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spArtistRanking" FunctionName="Top2000Model1.Store.spArtistRanking">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Top2000Model1.spArtistRanking_Result">
+                <ScalarProperty Name="ArtistName" ColumnName="ArtistName" />
+                <ScalarProperty Name="SongName" ColumnName="SongName" />
+                <ScalarProperty Name="SongYear" ColumnName="SongYear" />
+                <ScalarProperty Name="RankingPosition" ColumnName="RankingPosition" />
+                <ScalarProperty Name="RankingYear" ColumnName="RankingYear" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spSongList" FunctionName="Top2000Model1.Store.spSongList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Top2000Model1.spSongList_Result">
+                <ScalarProperty Name="RankingPosition" ColumnName="RankingPosition" />
+                <ScalarProperty Name="ArtistName" ColumnName="ArtistName" />
+                <ScalarProperty Name="SongName" ColumnName="SongName" />
+                <ScalarProperty Name="SongYear" ColumnName="SongYear" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spYearRanking" FunctionName="Top2000Model1.Store.spYearRanking">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Top2000Model1.spYearRanking_Result">
+                <ScalarProperty Name="RankingPosition" ColumnName="RankingPosition" />
+                <ScalarProperty Name="SongName" ColumnName="SongName" />
+                <ScalarProperty Name="SongYear" ColumnName="SongYear" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spYears" FunctionName="Top2000Model1.Store.spYears" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
