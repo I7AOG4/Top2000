@@ -8,21 +8,32 @@
 	<p>
 		<h5 class="text-white float-left">Lijst 2018</h5>
 	</p>
-	<p >
+	
 		@using (Html.BeginForm("YearRanking", "Rankings", FormMethod.Get))
-		{
+		{			
 		<b style="color:white; float:right">
+			Search By:
+			@Html.RadioButton("searchBy", "Songname")<text>Song naam</text>
+			@Html.RadioButton("searchBy", "Artiest")<text>Artiest</text>
 			Search:
-			@Html.TextBox("songName")<input type="submit" value="Search" />
+			@if ("searchBy" == "Artiest")
+			{
+				@Html.TextBox("artistname")<input type="submit" value="Search" />
+			}
+			else
+			{
+				@Html.TextBox("songName")<input type="submit" value="Search" />
+			}
+			
 		</b>
-		}
-	</p>
-	<p>
+	}
+
+
 		@using (Html.BeginForm())
 		{
 			@Html.DropDownList("jaar", new SelectList(ViewBag.Years, "jaar"), new { onchange = "this.form.submit();" })
 		}
-	</p>
+	
 </div>
 <table class="table table-light table-striped">
 	<thead class="thead-light">
