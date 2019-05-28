@@ -63,17 +63,17 @@ namespace Top2000.EF
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spArtistRanking_Result>("spArtistRanking", artistnameParameter);
         }
     
-        public virtual ObjectResult<spYearRanking_Result> spYearRanking(string songname, Nullable<int> rankingYear)
+
+        public virtual ObjectResult<spYearRanking_Result> spYearRanking(Nullable<int> rankingYear)
         {
-            var songnameParameter = songname != null ?
-                new ObjectParameter("Songname", songname) :
-                new ObjectParameter("Songname", typeof(string));
-    
+
             var rankingYearParameter = rankingYear.HasValue ?
                 new ObjectParameter("RankingYear", rankingYear) :
                 new ObjectParameter("RankingYear", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spYearRanking_Result>("spYearRanking", songnameParameter, rankingYearParameter);
+
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spYearRanking_Result>("spYearRanking", rankingYearParameter);
+
         }
     
         public virtual ObjectResult<string> spAllArtist()

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Top2000.EF.spArtistRanking_Result>
+
+@{
+    ViewBag.Title = "ArtistYear";
+}
+
+<h2 class="text-white">ArtistYear</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-light table-striped">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                Nr.
+            </th>
+            <th>
+                Liedje
+            </th>
+            <th>
+                Artiest
+            </th>
+            <th>
+                Jaar
+            </th>
+        </tr>
+    </thead>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RankingPosition)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SongName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArtistName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RankingYear)
+        </td>
+    </tr>
+}
+
+</table>

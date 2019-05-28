@@ -54,6 +54,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+
         <Function Name="spArtistGemiddelde" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="artistname" Type="varchar(max)" Mode="In" />
         </Function>
@@ -64,7 +65,8 @@
           <Parameter Name="Year" Type="int" Mode="In" />
         </Function>
         <Function Name="spYearRanking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Songname" Type="varchar(max)" Mode="In" />
+
+
           <Parameter Name="RankingYear" Type="int" Mode="In" />
         </Function>
         <Function Name="spYears" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -259,6 +261,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spAllArtist" FunctionName="Top2000Model.Store.spAllArtist" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

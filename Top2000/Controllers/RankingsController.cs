@@ -18,7 +18,8 @@ namespace Top2000.Controllers
         public ActionResult Index(int? jaar)
         {
 			ViewBag.Years = db.spYears().ToList();
-			if (jaar == null)
+            ViewBag.artist = db.spAllArtist().ToList();
+            if (jaar == null)
 			{
 				var data = db.spSongList(2018);
 				return View(data.ToList());
@@ -28,34 +29,12 @@ namespace Top2000.Controllers
 				return View(data.ToList());
 			}
         }
-        //overzicht4
-        //overzicht van de song waarop geselecterd
-        public ActionResult YearRanking(string songName, string searchBy,string artistname, int? jaar)
+
+        public ActionResult ArtistYear(string artist)
         {
-            if (searchBy == "Artiest")
-            {
-                var data = db.spArtistGemiddelde(artistname);
-                return View(data.ToList());
-            }
-            else if (searchBy == null){
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            } else
-            { 
-                if (jaar == null)
-                {
-                    var data = db.spYearRanking(songName, 2018);
-                    return View(data.ToList());
-                } else
-                     {
-                        var data = db.spYearRanking(songName, jaar);
-                         return View(data.ToList());
-                     }
-                 }   
+            var data = db.spArtistRanking(artist);
+            return View(data.ToList());
         }
-
-     
-
-
 
         // GET: Rankings/Details/5
         public ActionResult Details(int? id)
