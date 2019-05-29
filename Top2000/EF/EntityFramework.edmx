@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Top2000Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Top2000Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tblArtist">
           <Key>
             <PropertyRef Name="ArtistID" />
@@ -54,7 +54,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-
+        <Function Name="spAllArtist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spArtistGemiddelde" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="artistname" Type="varchar(max)" Mode="In" />
         </Function>
@@ -65,8 +65,7 @@
           <Parameter Name="Year" Type="int" Mode="In" />
         </Function>
         <Function Name="spYearRanking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-
-
+          <Parameter Name="Songname" Type="varchar(max)" Mode="In" />
           <Parameter Name="RankingYear" Type="int" Mode="In" />
         </Function>
         <Function Name="spYears" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -83,7 +82,8 @@
             <End Role="tblSongs" EntitySet="tblSongs" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Top2000Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -153,14 +153,14 @@
             <End Role="tblRanking" EntitySet="tblRanking" />
           </AssociationSet>
           <FunctionImport Name="spSongList" ReturnType="Collection(Top2000Model.spSongList_Result)">
-          <Parameter Name="Year" Mode="In" Type="Int32" />
+            <Parameter Name="Year" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spYears" ReturnType="Collection(Int32)" />
           <FunctionImport Name="spArtistGemiddelde" ReturnType="Collection(Top2000Model.spArtistGemiddelde_Result)">
-          <Parameter Name="artistname" Mode="In" Type="String" />
+            <Parameter Name="artistname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="spArtistRanking" ReturnType="Collection(Top2000Model.spArtistRanking_Result)">
-          <Parameter Name="artistname" Mode="In" Type="String" />
+            <Parameter Name="artistname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="spYearRanking" ReturnType="Collection(Top2000Model.spYearRanking_Result)">
             <Parameter Name="Songname" Mode="In" Type="String" />
