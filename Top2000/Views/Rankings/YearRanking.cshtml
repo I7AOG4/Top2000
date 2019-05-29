@@ -1,19 +1,22 @@
 ﻿@model IEnumerable<Top2000.EF.spYearRanking_Result>
 
-@{
+	@{
 	ViewBag.Title = "YearRanking";
-}
+	}
 
+	<h2>YearRanking</h2>
 
-
-@if (!Model.Any())
-{
+	<p>
+		@Html.ActionLink("Create New", "Create")
+	</p>
+	@if (!Model.Any())
+	{
 	<div class="alert alert-primary" role="alert">
 		<strong>Geen song met deze naam gevonden!</strong>
 	</div>
-}
-else
-{
+	}
+	else
+	{
 	<table class="table">
 		<tr>
 			<th>
@@ -25,21 +28,22 @@ else
 			<th>
 				Jaar van het liedje
 			</th>
+			<th></th>
 		</tr>
 
 		@foreach (var item in Model)
 		{
-			<tr>
-				<td>
-					@Html.DisplayFor(modelItem => item.RankingPosition)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.SongName)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.SongYear)
-				</td>
-			</tr>
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.RankingPosition)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.SongName)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.SongYear)
+			</td>
+		</tr>
 		}
 
 	</table>}
