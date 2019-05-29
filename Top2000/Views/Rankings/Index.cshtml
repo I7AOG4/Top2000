@@ -10,16 +10,26 @@
 	<div class="mr-auto">
 		<h5 class="text-white">Lijst 2018</h5>
 	</div>
-    <div class="ml-auto">
-        @using (Html.BeginForm())
-        {
-            @Html.DropDownList("jaar", new SelectList(ViewBag.Years, "jaar"), new { onchange = "this.form.submit();" })
-        }
-        @using (Html.BeginForm("ArtistYear", "Rankings"))
-        {
-            @Html.DropDownList("artist", new SelectList(ViewBag.artist, "artist"), new { onchange = "this.form.submit();" })
-        }
-    </div>
+	<div class="ml-auto">
+
+		<p>
+			@using (Html.BeginForm("YearRanking", "Rankings", FormMethod.Get))
+			{
+				<b style="color:white; float:right">
+					Search:
+					@Html.TextBox("songName")<input type="submit" value="Search" />
+				</b>
+			}
+		</p>
+		@using (Html.BeginForm())
+		{
+			@Html.DropDownList("jaar", new SelectList(ViewBag.Years, "jaar"), new { onchange = "this.form.submit();" })
+		}
+		@using (Html.BeginForm("ArtistYear", "Rankings"))
+		{
+			@Html.DropDownList("artist", new SelectList(ViewBag.artist, "artist"), new { onchange = "this.form.submit();" })
+		}
+	</div>
 
 </div>
 <table class="table table-light table-striped">
