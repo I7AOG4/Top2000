@@ -1,7 +1,7 @@
-﻿@model IEnumerable<Top2000.EF.spArtistRanking_Result>
+﻿@model IEnumerable<Top2000.EF.spArtistGemiddelde_Result>
 
 @{
-	ViewBag.Title = "ArtistYear";
+	ViewBag.Title = "ArtistGemiddelde";
 }
 
 <h2 class="text-white">ArtistYear</h2>
@@ -18,28 +18,16 @@
 			<th>
 				Liedje
 			</th>
-			<th>
-				Artiest
-			</th>
-			<th>
-				Jaar
-			</th>
 		</tr>
 	</thead>
 	@foreach (var item in Model)
 	{
 		<tr>
 			<td>
-				@Html.DisplayFor(modelItem => item.RankingPosition)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.SongName)
+				@Html.DisplayFor(modelItem => item.Average_Position)
 			</td>
 			<td>
 				@Html.DisplayFor(modelItem => item.ArtistName)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.RankingYear)
 			</td>
 		</tr>
 	}

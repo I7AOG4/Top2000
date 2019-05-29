@@ -15,10 +15,13 @@
 		<p>
 			@using (Html.BeginForm("YearRanking", "Rankings", FormMethod.Get))
 			{
-				<b style="color:white; float:right">
-					Search:
-					@Html.TextBox("songName")<input type="submit" value="Search" />
-				</b>
+			<b style="color:white; float:right">
+				<b>Search by: </b>
+				@Html.RadioButton("searchBy", "songName", true)<text>songName</text>
+				@Html.RadioButton("searchBy", "artistname")<text>artistname</text>
+				Search:
+				@Html.TextBox("songName")<input type="submit" value="Search" />
+			</b>
 			}
 		</p>
 		@using (Html.BeginForm())

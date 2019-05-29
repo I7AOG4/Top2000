@@ -37,35 +37,47 @@ namespace Top2000.Controllers
             var data = db.spArtistRanking(artist);
             return View(data.ToList());
         }
-        //overzicht4
+        //function4
         //overzicht van de song waarop geselecterd
-        public ActionResult YearRanking(string songName, string searchBy, string artistname, int? jaar)
+        public ActionResult YearRanking(string songName, string searchBy, int? jaar)
         {
-            if (searchBy == "Artiest")
+            if (searchBy == "songName")
+            {               
+                    if (jaar == null)
+                    {
+                        var data = db.spYearRanking(songName, 2018);
+                        return View(data.ToList());
+                    }
+                    else
+                    {
+                        var data = db.spYearRanking(songName, jaar);
+                        return View(data.ToList());
+                    }
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+        }
+
+        //function3
+        // overzicht van de gemiddelde positie van een artiest en zijn liedjes
+        public ActionResult ArtistGemiddelde(string searchBy, string artistname)
+        {
+            if (searchBy == "artistname")
             {
                 var data = db.spArtistGemiddelde(artistname);
                 return View(data.ToList());
             }
-            else if (searchBy == null)
+            else
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            else
-            {
-                if (jaar == null)
-                {
-                    var data = db.spYearRanking(songName, 2018);
-                    return View(data.ToList());
-                }
-                else
-                {
-                    var data = db.spYearRanking(songName, jaar);
-                    return View(data.ToList());
-                }
-            }
         }
-        // GET: Rankings/Details/5
-        public ActionResult Details(int? id)
+
+
+            // GET: Rankings/Details/5
+            public ActionResult Details(int? id)
         {
             if (id == null)
             {

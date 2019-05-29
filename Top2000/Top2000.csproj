@@ -204,7 +204,6 @@
     <Compile Include="EF\spSongList_Result.cs">
       <DependentUpon>EntityFramework.tt</DependentUpon>
     </Compile>
-
     <Compile Include="EF\spYearRanking.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -383,10 +382,7 @@
     <Content Include="Views\Songs\Details.cshtml" />
     <Content Include="Views\Songs\Edit.cshtml" />
     <Content Include="Views\Songs\Index.cshtml" />
-
-   
-    <Content Include="Views\Rankings\ArtistYear.cshtml" />
-
+    <Content Include="Views\Rankings\ArtistGemiddelde.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
