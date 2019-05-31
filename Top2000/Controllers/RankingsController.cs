@@ -43,6 +43,7 @@ namespace Top2000.Controllers
         {
             if (searchBy == "songName")
             {               
+
                     if (jaar == null)
                     {
                         var data = db.spYearRanking(songName, 2018);
