@@ -4,46 +4,45 @@
 	ViewBag.Title = "YearRanking";
 }
 
-<h2>YearRanking</h2>
+<h2 class="text-white">YearRanking</h2>
 
-<p>
-	@Html.ActionLink("Create New", "Create")
-</p>
 @if (!Model.Any())
 {
-<div class="alert alert-primary" role="alert">
-	<strong>Geen song met deze naam gevonden!</strong>
-</div>
+	<div class="alert alert-primary" role="alert">
+		<strong>Geen song met deze naam gevonden!</strong>
+	</div>
 }
 else
 {
-<table class="table">
-	<tr>
-		<th>
-			Nr.
-		</th>
-		<th>
-			Liedjes
-		</th>
-		<th>
-			Jaar van het liedje
-		</th>
-		<th></th>
-	</tr>
 
-	@foreach (var item in Model)
-	{
-		<tr>
-			<td>
-				@Html.DisplayFor(modelItem => item.RankingPosition)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.SongName)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.SongYear)
-			</td>
-		</tr>
-	}
+		<table class="table table-light table-striped">
+			<thead class="thead-light">
+				<tr>
+					<th>
+						Nr.
+					</th>
+					<th>
+						Liedjes
+					</th>
+					<th>
+						Jaar van het liedje
+					</th>
+					<th></th>
+				</tr>
+			</thead>
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>
+						@Html.DisplayFor(modelItem => item.RankingPosition)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.SongName)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.SongYear)
+					</td>
+				</tr>
+			}
 
-</table>}
+		</table>}

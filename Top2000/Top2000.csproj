@@ -352,6 +352,7 @@
     <Content Include="Views\Songs\Index.cshtml" />
     <Content Include="Views\Rankings\ArtistYear.cshtml" />
     <Content Include="Views\Rankings\YearRanking.cshtml" />
+    <Content Include="Views\Rankings\ArtistGemiddelde.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

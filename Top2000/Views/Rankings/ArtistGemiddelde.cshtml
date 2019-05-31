@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Top2000.EF.spArtistGemiddelde_Result>
+
+@{
+	ViewBag.Title = "ArtistGemiddelde";
+}
+
+<h2 class="text-white">ArtistYear</h2>
+
+
+<table class="table table-light table-striped">
+	<thead class="thead-light">
+		<tr>
+			<th>
+				Nr.
+			</th>
+			<th>
+				Liedje
+			</th>
+		</tr>
+	</thead>
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.Average_Position)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.ArtistName)
+			</td>
+		</tr>
+	}
+
+</table>
