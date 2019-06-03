@@ -19,14 +19,14 @@
 		}
 	</div>
 	<div class="ml-auto">
-		@using (Html.BeginForm("YearRanking", "Rankings", FormMethod.Get))
+		@using (Html.BeginForm("SearchCase", "Rankings", FormMethod.Get))
 		{
 			<b style="color:white; float:right">
 				<b>Search by: </b>
-				@Html.RadioButton("searchBy", "songName", true)<text>songName</text>
+				@Html.RadioButton("searchBy", "songname", true)<text>songName</text>
 				@Html.RadioButton("searchBy", "artistname")<text>artistname</text><br />
 				Search:
-				@Html.TextBox("songName")<input type="submit" value="Search" />
+				@Html.TextBox("value")<input type="submit" value="Search" />
 			</b>
 		}
 	</div>

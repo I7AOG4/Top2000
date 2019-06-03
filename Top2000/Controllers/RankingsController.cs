@@ -38,42 +38,35 @@ namespace Top2000.Controllers
         }
         //function4
         //overzicht van de song waarop geselecterd
-        public ActionResult YearRanking(string songName, string searchBy, int? jaar)
+        public ActionResult YearRanking(string songName, int? jaar)
         {
-            if (searchBy == "songName")
-            {
+			var data = db.spYearRanking(songName, 2018);
+			return View(data.ToList());
+		}
 
-                if (jaar == null)
-                {
-                    var data = db.spYearRanking(songName, 2018);
-                    return View(data.ToList());
-                }
-                else
-                {
-                    var data = db.spYearRanking(songName, jaar);
-                    return View(data.ToList());
-                }
-            }
-            else
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-        }
+		public ActionResult SearchCase(string searchBy, string value, int? jaar)
+		{
+			if (searchBy == "artistname")
+			{
+				return RedirectToAction("ArtistGemiddelde", new { @artistname = value});
+			}
+			else if(searchBy == "songname")
+			{
+				return RedirectToAction("YearRanking", new { @songName = value});
+			}
+			else
+			{
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+		}
 
         //function3
         // overzicht van de gemiddelde positie van een artiest en zijn liedjes
-        public ActionResult ArtistGemiddelde(string searchBy, string artistname)
+        public ActionResult ArtistGemiddelde(string artistname)
         {
-            if (searchBy == "artistname")
-            {
-                var data = db.spArtistGemiddelde(artistname);
-                return View(data.ToList());
-            }
-            else
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-        }
+			var data = db.spArtistGemiddelde(artistname);
+			return View(data.ToList());
+		}
 
 
 
