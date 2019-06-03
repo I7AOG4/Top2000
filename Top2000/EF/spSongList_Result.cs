@@ -17,5 +17,8 @@ namespace Top2000.EF
         public string SongName { get; set; }
         public string ArtistName { get; set; }
         public Nullable<int> SongYear { get; set; }
+        public Nullable<int> SongID { get; set; }
+        public Nullable<int> RankingYear { get; set; }
+        public Nullable<int> Verloop { get; set; }
     }
 }

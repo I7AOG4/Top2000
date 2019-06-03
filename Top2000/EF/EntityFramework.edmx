@@ -172,6 +172,9 @@
           <Property Type="String" Name="SongName" Nullable="true" MaxLength="255" />
           <Property Type="String" Name="ArtistName" Nullable="false" MaxLength="255" />
           <Property Type="Int32" Name="SongYear" Nullable="true" />
+          <Property Type="Int32" Name="SongID" Nullable="true" />
+          <Property Type="Int32" Name="RankingYear" Nullable="true" />
+          <Property Type="Int32" Name="Verloop" Nullable="true" />
         </ComplexType>
         <ComplexType Name="spArtistGemiddelde_Result">
           <Property Type="Int32" Name="Average_Position" Nullable="true" />
@@ -229,6 +232,9 @@
                 <ScalarProperty Name="SongName" ColumnName="SongName" />
                 <ScalarProperty Name="ArtistName" ColumnName="ArtistName" />
                 <ScalarProperty Name="SongYear" ColumnName="SongYear" />
+                <ScalarProperty Name="SongID" ColumnName="SongID" />
+                <ScalarProperty Name="RankingYear" ColumnName="RankingYear" />
+                <ScalarProperty Name="Verloop" ColumnName="Verloop" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
