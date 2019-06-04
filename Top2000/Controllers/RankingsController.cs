@@ -22,10 +22,12 @@ namespace Top2000.Controllers
             if (jaar == null)
 			{
 				var data = db.spSongList(2018);
+				ViewBag.Year = 2018;
 				return View(data.ToList());
 			} else
 			{
 				var data = db.spSongList(jaar);
+				ViewBag.Year = jaar;
 				return View(data.ToList());
 			}
         }
@@ -40,8 +42,15 @@ namespace Top2000.Controllers
         //overzicht van de song waarop geselecterd
         public ActionResult YearRanking(string songName, int? jaar)
         {
-			var data = db.spYearRanking(songName, 2018);
-			return View(data.ToList());
+			if (jaar == null)
+			{
+				var data = db.spYearRanking(songName, 2018);
+				return View(data.ToList());
+			} else
+			{
+				var data = db.spYearRanking(songName, jaar);
+				return View(data.ToList());
+			}
 		}
 
 		public ActionResult SearchCase(string searchBy, string value, int? jaar)
@@ -52,7 +61,7 @@ namespace Top2000.Controllers
 			}
 			else if(searchBy == "songname")
 			{
-				return RedirectToAction("YearRanking", new { @songName = value});
+				return RedirectToAction("YearRanking", new { @songName = value, @jaar = jaar});
 			}
 			else
 			{

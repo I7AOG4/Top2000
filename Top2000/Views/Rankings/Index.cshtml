@@ -6,7 +6,7 @@
 
 <div class="bg-dark d-flex" style="width:100%">
 	<div class="mr-auto">
-		<h5 class="text-white">Lijst 2018</h5>
+		<h5 class="text-white">Lijst @ViewBag.Year</h5>
 	</div>
 	<div class="mr-auto">
 		@using (Html.BeginForm())
@@ -23,6 +23,7 @@
 		{
 			<b style="color:white; float:right">
 				<b>Search by: </b>
+				<input type="hidden" name="jaar" value="@ViewBag.Year"/>
 				@Html.RadioButton("searchBy", "songname", true)<text>songName</text>
 				@Html.RadioButton("searchBy", "artistname")<text>artistname</text><br />
 				Search:
